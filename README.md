@@ -74,12 +74,11 @@ javac -cp "lib/junit-jupiter-api-5.10.2.jar" -d out MostCommonThree.java MostCom
  java -jar lib/junit-platform-console-standalone-1.10.2.jar -cp out --select-class MostCommonThree
  ```
 
-## 4 Most common 3
-
-The program returns the three most common strings it.
-### 2. Compile
+## 5 Rotate List
 
 The program rotates a list by moving each element in the list n times to the right.
+### 2. Compile
+
 ```bash
 javac -cp "lib/junit-jupiter-api-5.10.2.jar" -d out RotateList.java RotateListTest.java
 ````
