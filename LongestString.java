@@ -3,41 +3,42 @@ import java.util.List;
 
 public class LongestString{
 
-    public void longestString(String inputString){
-
-        //Initialize the variables
-        //TO keep track of the longest
-        int longest = 0;
-        int currentLength = 0;
-
-        //Keep track of visited characters
-
-        List<Character> visited = new ArrayList<>();
-
-
-        //through all the characters
-        for(char i : inputString){
-
-            if (visited.contains(i)){
-                currentLength=0;
-                visited.clear();
+    String longesString="";
+    public String longestString(String[] inputString,List<Character> validCharacters){
+        for(String s:inputString){
+            if (isValid(s,validCharacters)&&s.length()>longesString.length()){
+                longesString=s;
             }
-
-                currentLength ++;
-                visited.add(i);
-                longest = Math.max(longest,currentLength);
-
         }
-        return longest;
+        return longesString;
 
+    }
+    public boolean isValid(String s,List<Character> validCharacters)
+    {
+        //Vlaidity check
 
+        //1. if current char in the list of valid chars
+
+        for (char c : s.toCharArray()){
+            if(!validCharacters.contains(c)){
+                return false;
+            }
+        }
+        ///if consecutice similar charactes
+        for(int i=1; i< s.length();i++){
+            if(s.charAt(i)==s.charAt(i-1)){
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args){
-        LongestString longestString = new LongestString();
+        LongestString ls = new LongestString();
 
-        System.out.println(longestString.longestString("ASDLFHEOWIHFROWHF"));
+        String[] inputStrings = {"waradis", "afhiaweufh", "AGSUWGYW"};
+        List<Character> validCharacters = List.of('A', 'B', 'D', 'G', 'S', 'U', 'W', 'Y', 'R', 'I');
+
+        System.out.println(ls.longestString(inputStrings,validCharacters));
     }
-
-
 }
